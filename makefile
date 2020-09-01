@@ -1,13 +1,21 @@
 CC := g++
 CFLAGS := -Wall -Werror
-objects := $(wildcard *.cpp)
-objects := $(filter-out Macros.cpp, $(objects))
 
-all: Macros.cpp $(objects:.cpp=.o)
-	$(CC) Macros.cpp -o Macros.exe $(objects:.cpp=.o) $(CFLAGS)
+cpp_files := $(wildcard */*.cpp)
 
-%.o: %.c
-	$(CC) -c -o Objects $@ $< $(CFLAGS)
+objects := $(patsubst %.cpp, %.o, $(cpp_files))
+
+all_objects := $(wildcard */*.o)
+
+
+all: Macros.cpp $(objects)
+	$(CC) Macros.cpp -o Macros.exe $(objects) $(CFLAGS)
+
+%.o: %.cpp
+	$(CC) -c -o $@ $< $(CFLAGS)
 
 clean:
-	rm -f *.o Macros.exe
+	rm -f */*.o Macros.exe
+
+print:
+	

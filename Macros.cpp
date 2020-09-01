@@ -1,6 +1,6 @@
 #include "Header.h"
-#include "EventTree.h"
-#include "Event.h"
+#include "Events/EventTree.h"
+#include "Events/Event.h"
 
 int main(int argc, char** argv)
 {

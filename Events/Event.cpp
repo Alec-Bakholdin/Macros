@@ -23,11 +23,3 @@ int Event::Invoke()
     }
     return 0;
 }
-
-
-
-bool Event::Equal(Event one, Event two)
-{
-    if(one.type != two.type)
-        return false;
-}
