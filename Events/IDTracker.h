@@ -14,8 +14,8 @@ class IDTracker{
         IDTracker();                    //Default Constructor. Initializes the event map
 
         string generateEventID();        //Generate a random Event ID that hasn't been used yet
-        int insertEvent(Event *event);   //Inserts an event
         Event *getEvent(string ID);      //Find an in the map given teh 
+        int insertEvent(Event *event);   //Inserts an event into the map with key event->id
         int removeEvent(string ID);      //Remove the event with the matching 
 
 };

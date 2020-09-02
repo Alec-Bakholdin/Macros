@@ -1,6 +1,8 @@
 #pragma once
 
 #include "../Header.h"
+#include "KeyboardEvent.h"
+
 
 
 //Keyboard Event
@@ -26,18 +28,19 @@ class Event{
     public:
 
         //Variables defining the class
-        string         id;         //Unique ID for the event
-        EventType   type;       //Type of the event (Keyboard, Mouse, etc.)
-        EventData   eventData;  //Actual event (what key, how long to press, etc.)
+        string      id;         //Unique ID for the event
         bool        invokable;  //Is it invokable or triggered? Are we listening for or doing this event?
+        EventType   eventType;       //Type of the event (Keyboard, Mouse, etc.)
+        EventData   eventData;  //Actual event (what key, how long to press, etc.)
 
 
         //Constructors
-        Event();                                            // Creates empty event, no type
-        Event(int id, EventType type, EventData eventData); // More robust event constructor
+        Event();                                                               // Creates empty event, no type
+        Event(string id, bool invokable, EventType type, EventData eventData); // More robust event constructor
 
         //Methods
         static int Equal(Event *one, Event *two);     //Check for equality of two events
         int Equal(Event *event);                      //Check for equality between this and another
         int Invoke();                                 //Invokes the event, if possible
+        virtual string tostring();                    //Returns string representation of the event out for debugging purposes
 };

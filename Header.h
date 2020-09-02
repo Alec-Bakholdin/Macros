@@ -10,3 +10,7 @@ using std::string;
 using std::map;
 using std::pair;
 
+#include "Events/IDTracker.h"
+
+static IDTracker Event_IDs;
+

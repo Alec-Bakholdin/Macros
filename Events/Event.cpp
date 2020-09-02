@@ -3,21 +3,33 @@
 
 Event::Event()
 {
-    
+    this->id = Event_IDs.generateEventID();
+    this->invokable = false;
+    this->eventType = None;
+    this->eventData = {};
+
+    //Handle errors here
+    if(Event_IDs.insertEvent(this) != 0)
+        return;
 }
 
-Event::Event(int id, EventType type, union EventData eventData)
+Event::Event(string id, bool invokable, EventType type, union EventData eventData)
 {
     this->id = id;
-    this->type = type;
+    this->invokable = invokable;
+    this->eventType = type;
     this->eventData = eventData;
+
+    //Handle errors here
+    if(Event_IDs.insertEvent(this) != 0)
+        return;
 }
 int Event::Invoke()
 {
-    switch(this->type)
+    switch(this->eventType)
     {
         case Keyboard:
-            printf("Keyboard Event: '%c'\n", this->eventData.KEY.key);
+            printf("Invoking '%s'", ((KeyboardEvent*)this)->tostring());
             break;
         case Mouse:
             printf("Mouse Event\n");
