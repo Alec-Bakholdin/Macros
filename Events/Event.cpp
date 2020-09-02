@@ -1,5 +1,6 @@
 #include "Event.h"
-#include "EventTree.h"
+#include "KeyboardEvent.h"
+#include "IDTracker.h"
 
 Event::Event()
 {
@@ -29,14 +30,18 @@ int Event::Invoke()
     switch(this->eventType)
     {
         case Keyboard:
-            printf("Invoking '%s'", ((KeyboardEvent*)this)->tostring());
+            printf("Invoking %s", ((KeyboardEvent*)this)->tostring().c_str());
             break;
         case Mouse:
             printf("Mouse Event\n");
             break;
         default:
             printf("Default Action. Something went wrong\n");
-            return -1;
+            return 1;
     }
     return 0;
+}
+string Event::tostring()
+{
+    return ((KeyboardEvent*)this)->tostring();
 }

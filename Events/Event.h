@@ -1,9 +1,7 @@
-#pragma once
+#ifndef EVENT_H
+#define EVENT_H
 
 #include "../Header.h"
-#include "KeyboardEvent.h"
-
-
 
 //Keyboard Event
 typedef struct KeyboardEventData{
@@ -30,7 +28,7 @@ class Event{
         //Variables defining the class
         string      id;         //Unique ID for the event
         bool        invokable;  //Is it invokable or triggered? Are we listening for or doing this event?
-        EventType   eventType;       //Type of the event (Keyboard, Mouse, etc.)
+        EventType   eventType;  //Type of the event (Keyboard, Mouse, etc.)
         EventData   eventData;  //Actual event (what key, how long to press, etc.)
 
 
@@ -41,6 +39,8 @@ class Event{
         //Methods
         static int Equal(Event *one, Event *two);     //Check for equality of two events
         int Equal(Event *event);                      //Check for equality between this and another
-        int Invoke();                                 //Invokes the event, if possible
+        virtual int Invoke();                                 //Invokes the event, if possible
         virtual string tostring();                    //Returns string representation of the event out for debugging purposes
 };
+
+#endif

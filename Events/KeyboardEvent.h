@@ -1,6 +1,10 @@
+#ifndef KEYBOARDEVENT_H
+#define KEYBOARDEVENT_H
+
+#include "../Header.h"
 #include "Event.h"
 
-class KeyboardEvent : public Event{
+class KeyboardEvent : public Event {
     public:
 
         //Constructors
@@ -17,3 +21,5 @@ class KeyboardEvent : public Event{
         string tostring();                                      //String representation of the event, for debugging purposes
         static string tostring(KeyboardEvent *event);            //Static version of the above function
 };
+
+#endif

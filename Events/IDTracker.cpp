@@ -1,4 +1,5 @@
 #include "IDTracker.h"
+#include "Event.h"
 
 IDTracker::IDTracker()
 {
@@ -22,8 +23,9 @@ string IDTracker::generateEventID()
     do
     {
         for(int i = 0; i < ID_LENGTH; i++)
-            output[i] = rand() % 10 + '0';
-        output[ID_LENGTH] = 0;
+            output[i] = rand() % 10 + '0'; //Select random character from 0-9
+
+        output[ID_LENGTH] = 0; //Null-terminate it so when converted to char* it's still fine
 
     }while(ID_Event_Map.find(output) != ID_Event_Map.end());
 
@@ -56,18 +58,18 @@ int IDTracker::insertEvent(Event *event)
     //First check to see if the event id is already mapped
     if(ID_Event_Map.count(event->id) > 0)
     {
-        printf("ERROR: Key %s is already mapped to the event '%s'\n", event->id, ID_Event_Map[event->id]->tostring());
+        printf("ERROR: Key %s is already mapped to the event %s\n", event->id.c_str(), ID_Event_Map[event->id]->tostring().c_str());
         return 1;
     }
 
-    //If the insert function fails, it will return a pair <event, false>, which we check
+    //If the insert function fails, it will return a pair <event, false>, which we check here
     if(ID_Event_Map.insert(pair<string, Event *>(event->id, event)).second == false)
     {
-        printf("ERROR: Could not insert Event '%s'\n", event->tostring());
+        printf("ERROR: Could not insert Event '%s'\n", event->tostring().c_str());
         return 2;
     }
 
-    //If nothing else, return true!
+    //If nothing else, return Success!
     return 0;
 }
 

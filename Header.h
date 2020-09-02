@@ -1,4 +1,5 @@
-#pragma once
+#ifndef HEADER_H
+#define HEADER_H
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -10,7 +11,4 @@ using std::string;
 using std::map;
 using std::pair;
 
-#include "Events/IDTracker.h"
-
-static IDTracker Event_IDs;
-
+#endif

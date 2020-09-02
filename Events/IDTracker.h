@@ -1,9 +1,13 @@
-#pragma once
+#ifndef IDTRACKER_H
+#define IDTRACKER_H
 
 #include "../Header.h"
-#include "Event.h"
+
 
 #define ID_LENGTH 10
+
+
+class Event;
 
 class IDTracker{
     public:
@@ -19,3 +23,7 @@ class IDTracker{
         int removeEvent(string ID);      //Remove the event with the matching 
 
 };
+
+static IDTracker Event_IDs;
+
+#endif
