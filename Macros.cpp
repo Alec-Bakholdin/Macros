@@ -1,10 +1,16 @@
 #include "Header.h"
-#include "Events/EventTree.h"
 #include "Events/Event.h"
+#include "Events/IDTracker.h"
 
 int main(int argc, char** argv)
 {
-    KeyboardEvent keyEvent = {'a'};
+    //Initialize the ID tracker
+    IDTracker idtracker = IDTracker();
+
+    printf(idtracker.generateEventID().c_str());
+    printf("\n");
+
+    KEYDATA keyEvent = {'a'};
     EventData eventData = {keyEvent};
     Event event(1, Keyboard, eventData);
 

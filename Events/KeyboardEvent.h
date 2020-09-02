@@ -1,4 +1,3 @@
-#include "Header.h"
 #include "Event.h"
 
 class KeyboardEvent : public Event{
@@ -7,10 +6,11 @@ class KeyboardEvent : public Event{
         //Constructors
         KeyboardEvent();                                    //Default Constructor
         KeyboardEvent(int id);                              //Empty with an id
-        KeyboardEvent(int id, KEYDATA keyboardEventData);   //Full constructor
+        KeyboardEvent(int id, KEYDATA keyData);   //Full constructor
 
-        //
-        static int Equal(KeyboardEvent one, KeyboardEvent two);
-        int Equal(KeyboardEvent event);
-        int Invoke();
-}
+        //Methods
+        static int Equal(KeyboardEvent one, KeyboardEvent two); //Equality between two KeyboardEvents
+        int Equal(KeyboardEvent event);                         //Equality between this and another KeyboardEvent
+        int Invoke();                                           //Invokes the event, if possible
+
+};

@@ -1,8 +1,12 @@
-#ifndef HEADER_H
-#define HEADER_H
+#pragma once
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <windows.h>
+#include <string>
+#include <map>
 
-#endif
+using std::string;
+using std::map;
+using std::pair;
+

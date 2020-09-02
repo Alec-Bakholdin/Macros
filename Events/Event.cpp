@@ -1,6 +1,11 @@
 #include "Event.h"
 #include "EventTree.h"
 
+Event::Event()
+{
+    
+}
+
 Event::Event(int id, EventType type, union EventData eventData)
 {
     this->id = id;
